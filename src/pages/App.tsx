@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { faker } from '@faker-js/faker';
+import { v4 as uuidv4 } from 'uuid';
 
 import Cronometro from '../components/Cronometro';
 import Formulario from '../components/Formulario';
@@ -8,9 +8,9 @@ import style from './style.module.scss';
 
 function App() {
     const [tarefas, setTarefas] = useState([
-        { id: faker.datatype.uuid(), tarefa: 'React', tempo: '02:00:00' }, 
-        { id: faker.datatype.uuid(), tarefa: 'Javascript', tempo: '01:00:00' },
-        { id: faker.datatype.uuid(), tarefa: 'Typescript', tempo: '03:00:00' }
+        { id: uuidv4(), tarefa: 'React', tempo: '02:00:00' }, 
+        { id: uuidv4(), tarefa: 'Javascript', tempo: '01:00:00' },
+        { id: uuidv4(), tarefa: 'Typescript', tempo: '03:00:00' }
     ]);
 
     return (

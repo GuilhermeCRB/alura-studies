@@ -1,4 +1,4 @@
-import { faker } from '@faker-js/faker';
+import { v4 as uuidv4 } from 'uuid';
 import React, { Dispatch, SetStateAction, useState } from 'react';
 
 import ITarefa from '../../types/tarefa';
@@ -13,7 +13,7 @@ export default function Formulario ({ setTarefas }: { setTarefas: Dispatch<SetSt
 
     function adicionarTarefa(e: React.FormEvent){
         e.preventDefault();
-        const inputWithId = {...input, id: faker.datatype.uuid()};
+        const inputWithId = {...input, id: uuidv4()};
         setTarefas(tarefasAntigas => [...tarefasAntigas, inputWithId]);
     }
 
