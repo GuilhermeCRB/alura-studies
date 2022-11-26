@@ -1,15 +1,20 @@
-import React, { useState } from 'react';
+import { faker } from '@faker-js/faker';
+import React, { Dispatch, SetStateAction, useState } from 'react';
+
+import ITarefa from '../../types/tarefa';
 import Botao from '../Botao';
 import style from './style.module.scss';
-
-export default function Formulario () {
+ 
+export default function Formulario ({ setTarefas }: { setTarefas: Dispatch<SetStateAction<ITarefa[]>>}) {
     const [input, setInput] = useState({ 
-        tarefa: '--',
+        tarefa: '',
         tempo: "00:00"
     })
 
     function adicionarTarefa(e: React.FormEvent){
         e.preventDefault();
+        const inputWithId = {...input, id: faker.datatype.uuid()};
+        setTarefas(tarefasAntigas => [...tarefasAntigas, inputWithId]);
     }
 
     return (
@@ -44,7 +49,7 @@ export default function Formulario () {
                     required
                 />
             </div>
-            <Botao>Adicionar</Botao>
+            <Botao type="submit">Adicionar</Botao>
         </form>
     );
 }
