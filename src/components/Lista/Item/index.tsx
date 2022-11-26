@@ -1,7 +1,9 @@
 import { memo } from 'react';
-import style from '../style.module.scss';
 
-function Item({ tarefa, tempo }: {tarefa: string, tempo: string}) {
+import style from '../style.module.scss';
+import ITarefa from '../../../types/tarefa';
+
+function Item({ tarefa, tempo, selecionado, completado, id}: ITarefa) {
     return (
      <li className={style.item}>
        <h3> {tarefa} </h3>

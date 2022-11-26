@@ -13,8 +13,17 @@ export default function Formulario ({ setTarefas }: { setTarefas: Dispatch<SetSt
 
     function adicionarTarefa(e: React.FormEvent){
         e.preventDefault();
-        const inputWithId = {...input, id: uuidv4()};
+        const inputWithId = {...input, 
+            id: uuidv4(), 
+            selecionado: false,
+            completado: false
+        };
+        
         setTarefas(tarefasAntigas => [...tarefasAntigas, inputWithId]);
+        setInput({
+            tarefa: "",
+            tempo: "00:00"
+        });
     }
 
     return (
