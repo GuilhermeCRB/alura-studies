@@ -1,10 +1,12 @@
 import style from './style.module.scss'
 
 export default function Botao(
-    { children, type = "button" }: { children: string, type?: "button" | "submit" | "reset" | undefined }
+    { children, type = "button", onClick }: { children: string, type?: "button" | "submit" | "reset" | undefined,
+      onClick?: () => void
+    }
   ) {
   return (
-    <button className={style.botao} type={type}>
+    <button onClick={onClick} className={style.botao} type={type}>
       {children}
     </button>
   )
