@@ -3,27 +3,29 @@ import { memo } from 'react';
 import style from './Item.module.scss';
 import ITarefa from '../../../types/tarefa';
 
-interface Props extends ITarefa{
-  selecionaTarefa: (tarefaSelecionada: ITarefa) => void    
+interface Props extends ITarefa {
+  selecionaTarefa: (tarefaSelecionada: ITarefa) => void;
 }
 
-function Item({ selecionaTarefa, tarefa, tempo, selecionado, completado, id}: Props) {
+function Item({ selecionaTarefa, tarefa, tempo, selecionado, completado, id }: Props) {
   return (
-    <li 
+    <li
       className={`${style.item} ${selecionado ? style.itemSelecionado : ''} ${completado ? style.itemCompletado : ''}`}
-      onClick={()=> selecionaTarefa({
-        tarefa,
-        tempo,
-        selecionado,
-        completado,
-        id
-      })}
+      onClick={() =>
+        selecionaTarefa({
+          tarefa,
+          tempo,
+          selecionado,
+          completado,
+          id,
+        })
+      }
     >
       <h3> {tarefa} </h3>
       <span> {tempo} </span>
       {completado && <span className={style.concluido} aria-label="tarefa completada"></span>}
     </li>
-  )
+  );
 }
 
 export default memo(Item);
